@@ -1,2 +1,2 @@
-# fabiana
-Demonstration of Adobe Marketing Cloud capabilities with MS Azure and Wordpress.
+# Project Fabiana
+Demonstration of Adobe Marketing Cloud capabilities hosted on MS Azure and Wordpress.
