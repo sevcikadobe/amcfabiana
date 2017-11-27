@@ -55,12 +55,13 @@
         	elem.checked = true;
         };
         elem.addEventListener('click', function (e) {
-        	console.log(this.checked == false);
         	if(this.checked == false){
         		_satellite.cookie.set("sat_track", "false");
+                console.log("Tracking Consent: OFF")
         	}
         	else {
         		_satellite.cookie.set("sat_track", "true");
+                console.log("Tracking Consent: ON")
         	}
         }, false);
         _satellite.pageBottom();
