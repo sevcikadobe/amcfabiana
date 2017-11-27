@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <title>Hello :launch:</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+    <script src="//assets.adobedtm.com/launch-EN2af9b9250fbb4ad39df57342ca4c6f17.min.js"></script>
+</head>
+
+<body class="text-center mx-auto">
+    <h1 >Adobe Launch - One-click shop</h1>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Cookie Consent</h3>
+        </div>
+        <div class="panel-body">
+            <div class="checkbox">
+               	<label>
+               		<input type="checkbox" value="" id="cookieConsent">
+               		I agree with tracking.
+               	</label>
+               </div>   
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Setup description</h3>
+        </div>
+        <div class="panel-body">
+            This page contains simple Adobe Launch implementation with Marketing Cloud Visitor ID Service, Adobe Analytics and HTML data layer.<br/>
+            After clicking the button Adobne Launch fires Adobe Analytics on-click tracking with purchase event, product information and transaction ID.<br/> Open a browser console and watch the magic happen.
+        </div>
+    </div>
+    <!-- Bootstrap JavaScript -->
+    <!-- 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <div>
+        <button type="button" class="btn btn-primary" data-tracking="'purchase',{'cartType':'1step','orderID':'61-25009','currencyCode':'USD','paymentMethod':'CREDIT_CARD','emailOptIn':'true','delayedOrder':'false','autobilling':'true','orderTotal':'1.99','orderTotalUSD':'1.99','fxRate':'1','cartContent':[{'category':'categoryA','product':'productA','quantity':'1','price':'1.99'}]}">Buy ProductA</button>
+    </div>
+    <script type="text/javascript">
+        var elem = document.getElementById("cookieConsent");
+        if(_satellite.cookie.set("sat_track") == "true") {
+        	elem.checked = true;
+        };
+        elem.addEventListener('click', function (e) {
+        	console.log(this.checked == false);
+        	if(this.checked == false){
+        		_satellite.cookie.set("sat_track", "false");
+        	}
+        	else {
+        		_satellite.cookie.set("sat_track", "true");
+        	}
+        }, false);
+        _satellite.pageBottom();
+    </script>
+</body>
+
+</html>
