@@ -1,6 +1,22 @@
 var s_account="geo1xxlonhacka"
 var s=s_gi(s_account)
 
+s.usePlugins = true
+
+function s_doPlugins(s) {
+
+s.AudienceManagement.setup({
+     "partner":"hackathonaptrsd",
+     "containerNSID":0,
+     "uuidCookie": {
+          "name":"aam_uuid",
+          "days":30
+     }
+});
+
+}
+
+s.doPlugins = s_doPlugins
 
 /*
  Start ActivityMap Module
