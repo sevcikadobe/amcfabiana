@@ -1,4 +1,4 @@
-var s_account="geo1xxlonhackb"
+var s_account="###ADDHERE###"
 var s=s_gi(s_account)
 
 s.usePlugins = true
@@ -6,7 +6,7 @@ s.usePlugins = true
 function s_doPlugins(s) {
 
 s.AudienceManagement.setup({
-     "partner":"hackathonbptrsd",
+     "partner":"###ADDHERE###",
      "containerNSID":0,
      "uuidCookie": {
           "name":"aam_uuid",
