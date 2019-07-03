@@ -59,11 +59,15 @@
                  <form action="" method="GET" class="form-inline" role="form" id="loginform">
                     <div class="form-group">
                         <label class="sr-only" for="">email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Input field" name="email">
+                        <input type="email" class="form-control" id="login-email" placeholder="Input field" name="email">
                     </div>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </form>
                 <form action="" method="GET" class="form-inline" role="form" id="logoutform">
+                        <div class="form-group">
+                                <label class="sr-only" for="">email</label>
+                                <input type="email" class="form-control" id="logout-email" placeholder="Input field" name="email" value="" disabled="true">
+                            </div>
                         <button type="submit" class="btn btn-primary" id="logout-btn">Logout</button>
                 </form>
                 <script>
@@ -72,6 +76,7 @@
                     if(myParam != null) {
                         localStorage.setItem("logged", "true")
                         digitalData.crmId = myParam;
+                        document.getElementById("logout-email").value = myParam;
                     }
 
                     if(localStorage.getItem("logged") == "true") {
@@ -120,7 +125,8 @@
             elem.checked = true;
         };
         elem.addEventListener('click', function (e) {
-            console.log(this.checked == false);
+            console.log("Valid Age:")
+            console.log(this.checked == true);
             if (this.checked == false) {
                 localStorage.setItem("sat_track", "false");
                 //_satellite.cookie.set("sat_track", "false");
