@@ -7,31 +7,82 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-    <title>Hello :launch:</title>
+    <title>Hello Launch by Adobe</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
-    <script src="//assets.adobedtm.com/launch-EN2af9b9250fbb4ad39df57342ca4c6f17.min.js"></script>
+    <!-- DEV ALPHA -->
+    <script src="//assets.adobedtm.com/launch-EN2af9b9250fbb4ad39df57342ca4c6f17.min.js" async></script>
 </head>
 
 <body class="text-center mx-auto">
-    <h1 >Adobe Launch - One-click shop</h1>
+    <script lang="javascript">
+        digitalData = { crmId: '' }
+    </script>
+    <h1>1-click <i class="em em-beer"></i> shop</h1>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Shopping Cart</h3>
+        </div>
+        <div class="panel-body">
+            <ul>
+                <li>Product: Beer, Pilsner Type</li>
+                <li>Category: Beverages</li>
+                <li>Price: 1.99 USD</li>
+            </ul>
+        </div>
+    </div>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Cookie Consent</h3>
         </div>
         <div class="panel-body">
             <div class="checkbox">
-               	<label>
-               		<input type="checkbox" value="" id="cookieConsent">
-               		I agree with tracking.
-               	</label>
-               </div>   
+                <label>
+                    <input type="checkbox" value="" id="cookieConsent">
+                    I am older than 18.
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Login</h3>
+        </div>
+        <div class="panel-body">
+                 <form action="" method="GET" class="form-inline" role="form" id="loginform">
+                    <div class="form-group">
+                        <label class="sr-only" for="">email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Input field" name="email">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                <form action="" method="GET" class="form-inline" role="form" id="logoutform">
+                        <button type="submit" class="btn btn-primary" id="logout-btn">Logout</button>
+                </form>
+                <script>
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const myParam = urlParams.get('email');
+                    if(myParam != null) {
+                        localStorage.setItem("logged", "true")
+                        digitalData.crmId = myParam;
+                    }
+
+                    if(localStorage.getItem("logged") == "true") {
+                        document.getElementById("loginform").style = "display:none";
+                    } else {
+                        document.getElementById("logoutform").style = "display:none";
+                    }
+
+                    document.getElementById("logout-btn").addEventListener("click", function(){ localStorage.removeItem("logged"); });
+
+                </script>
         </div>
     </div>
     <div class="panel panel-info">
@@ -39,30 +90,51 @@
             <h3 class="panel-title">Setup description</h3>
         </div>
         <div class="panel-body">
-            This page contains simple Adobe Launch implementation with Marketing Cloud Visitor ID Service, Adobe Analytics and HTML data layer.<br/>
-            After clicking the button Adobne Launch fires Adobe Analytics on-click tracking with purchase event, product information and transaction ID.<br/> Open a browser console and watch the magic happen.
+            <p>This page contains simple Launch by Adobe implementation with HTML data layer. Inside Launch we are
+                running Marketing Cloud Visitor ID Service and Adobe Analytics extensions.</p>
+            <pre>
+                <code>
+                  &lt;button type="button" class="btn btn-primary" data-tracking="'purchase',{'cartType':'1step','orderID':'61-25009','currencyCode':'USD','paymentMethod':'CREDIT_CARD','emailOptIn':'true','delayedOrder':'false','autobilling':'true','orderTotal':'1.99','orderTotalUSD':'1.99','fxRate':'1','cartContent':[{'category':'beverages','product':'beer','quantity':'1','price':'1.99'}]}"&gt;Purchase&lt;/button&gt;  
+                </code>
+            </pre>
+            <p>After clicking the button Launch by Adobe fires Adobe Analytics on-click tracking with purchase event,
+                product information and transaction ID.<br /> Open a browser console and watch the magic happen.</p>
         </div>
     </div>
     <!-- Bootstrap JavaScript -->
     <!-- 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <div>
-        <button type="button" class="btn btn-primary" data-tracking="'purchase',{'cartType':'1step','orderID':'61-25009','currencyCode':'USD','paymentMethod':'CREDIT_CARD','emailOptIn':'true','delayedOrder':'false','autobilling':'true','orderTotal':'1.99','orderTotalUSD':'1.99','fxRate':'1','cartContent':[{'category':'categoryA','product':'productA','quantity':'1','price':'1.99'}]}">Buy ProductA</button>
+        <button type="button" class="btn btn-primary" id="purchaseBtn"
+            data-tracking="'purchase',{'cartType':'1step','orderID':'61-25009','currencyCode':'USD','paymentMethod':'CREDIT_CARD','emailOptIn':'true','delayedOrder':'false','autobilling':'true','orderTotal':'1.99','orderTotalUSD':'1.99','fxRate':'1','cartContent':[{'category':'beverages','product':'beer','quantity':'1','price':'1.99'}]}">1-click
+            Purchase</button>
+    </div>
+    <hr>
+    <div class="alert alert-success hidden" role="alert" id="purchaseConf">
+        <h4 class="alert-heading">Well done!</h4>
+        <p>Aww yeah, you successfully purchased the item.</p>
     </div>
     <script type="text/javascript">
         var elem = document.getElementById("cookieConsent");
-        if(_satellite.cookie.set("sat_track") == "true") {
-        	elem.checked = true;
+        if (localStorage.getItem('sat_track') == "true") {
+            elem.checked = true;
         };
         elem.addEventListener('click', function (e) {
-        	if(this.checked == false){
-        		_satellite.cookie.set("sat_track", "false");
-                console.log("Tracking Consent: OFF")
-        	}
-        	else {
-        		_satellite.cookie.set("sat_track", "true");
-                console.log("Tracking Consent: ON")
-        	}
+            console.log(this.checked == false);
+            if (this.checked == false) {
+                localStorage.setItem("sat_track", "false");
+                //_satellite.cookie.set("sat_track", "false");
+            }
+            else {
+                localStorage.setItem("sat_track", "true");
+                //_satellite.cookie.set("sat_track", "true");
+            }
+        }, false);
+        var elem1 = document.getElementById("purchaseBtn");
+        elem1.addEventListener('click', function (e) {
+            if (localStorage.getItem('sat_track') == "true") {
+                document.getElementById("purchaseConf").className = "alert alert-success";
+            }
         }, false);
         _satellite.pageBottom();
     </script>
